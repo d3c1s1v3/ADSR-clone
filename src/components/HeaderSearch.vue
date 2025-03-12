@@ -21,7 +21,7 @@ const handleSearch = () => {
 <style scoped>
 .container {
   height: 100%;
-  flex: 3;
+  flex: 1;
   position: relative;
 }
 
@@ -39,6 +39,7 @@ input {
   border: none;
   padding: 2rem;
   color: white;
+  font-size: 1.5rem;
 }
 .search-icon {
   color: white;

@@ -24,12 +24,3 @@ export const LIST_ITEMS = [
     path: "/bundles",
   },
 ];
-
-export const HEADER_CTA_ITEMS = [
-  {
-    label: "CREATE ACCOUNT",
-  },
-  {
-    label: "SIGN IN",
-  },
-];

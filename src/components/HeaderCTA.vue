@@ -1,10 +1,17 @@
-<script setup lang="ts">
-import { HEADER_CTA_ITEMS } from "@/constants/navigation";
-</script>
+<script setup lang="ts"></script>
 <template>
   <div class="container">
-    <button v-for="item in HEADER_CTA_ITEMS" :key="item.label">{{ item.label }}</button>
-    <button>
+    <div class="btn-group btn-group-register">
+      <div class="overlay"></div>
+      <button class="navbar-item">CREATE ACCOUNT</button>
+      <div class="create-account"></div>
+    </div>
+    <div class="btn-group btn-group-sign-in">
+      <div class="overlay"></div>
+      <button class="navbar-item divider">SIGN IN</button>
+      <div class="sign-in"></div>
+    </div>
+    <button class="cart-btn">
       <font-awesome-icon icon="fa-cart-shopping" />
       <span><font-awesome-icon icon="fa-euro" /> 0.00</span>
     </button>
@@ -13,50 +20,88 @@ import { HEADER_CTA_ITEMS } from "@/constants/navigation";
 <style scoped>
 .container {
   display: flex;
-  flex: 2;
   height: 100%;
+  flex: 1;
 }
-button {
+
+.btn-group {
   height: 100%;
   display: flex;
+}
+
+.cart-btn {
+  background-color: #014bff;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  cursor: pointer;
+  gap: 1rem;
+  transition: 0.3s all;
+  padding-inline: 3rem;
+}
+.cart-btn:hover {
+  background-color: #20bf00;
+}
+
+button {
   color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-inline: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: transparent;
+}
+
+.create-account,
+.sign-in {
+  display: none;
+  opacity: 0;
+  z-index: 9999;
+  position: absolute;
+  width: 460px;
+  height: 470px;
+  background-color: #171717;
+  transform: translateY(80px) translateX(-80px);
+  transition: all 100ms;
+}
+.btn-group-register:hover .create-account {
+  display: block;
+  opacity: 1;
+}
+.btn-group-sign-in:hover .sign-in {
+  display: block;
+  opacity: 1;
+}
+
+.btn-group-register:hover .overlay,
+.btn-group-sign-in:hover .overlay {
+  display: block;
+  opacity: 1;
+}
+
+.overlay {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 100ms;
+}
+
+.divider {
   position: relative;
 }
 
-button:nth-child(1) {
-  flex: 3;
-  border: none;
-  outline: none;
-}
-button:nth-child(2) {
-  flex: 2;
-  border: none;
-  outline: none;
-}
-
-button:nth-child(2):before {
+.divider::before {
   content: "";
-  position: absolute;
-}
-
-button:nth-child(3) {
-  flex: 2;
-  border: none;
-  outline: none;
   background-color: #014bff;
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-button:nth-child(3):hover {
-  background-color: #20bf00;
+  height: 2rem;
+  width: 0.1rem;
+  position: absolute;
+  transform: translateX(-1.3rem);
 }
 </style>
